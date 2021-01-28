@@ -9,16 +9,17 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        
+
     },
-    accessToken:{
-        type:String
+    accessToken: {
+        type: String
     },
-    userId:{
-      type:String
+    userId: {
+        type: String
     }
-    
+
 })
+
 
 const User = new mongoose.model('User', userSchema)
 
