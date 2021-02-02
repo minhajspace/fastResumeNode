@@ -6,6 +6,9 @@ require('./database/mongoose')
 let cors = require('cors')
 app.use(cors())
 const userRouter = require('./router/users')
+const cookieParser = require('cookie-parser')
+
+app.use(cookieParser())
 
 
 

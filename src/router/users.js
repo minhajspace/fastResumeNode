@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken")
 
 
 
+
+
 //create token 
 
 const maxAge = 3 * 24 * 60 * 60;
@@ -27,7 +29,12 @@ router.post('/users', async (req, res) => {
         await data.save()
         const token = createJsonWebToken(data._id)
         console.log(token)
-        res.status(201).send({ token });
+        res.status(201).cookie("jwt", token, {
+            maxAge: 60 * 60 * 1000, // 1 hour
+            httpOnly: true,
+            secure: true,
+            sameSite: true,
+        })
     } catch (error) {
         res.status(400).send(error);
     }
